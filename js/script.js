@@ -1,8 +1,7 @@
 // En este archivo no utilizamos el evento "DOMContentLoaded", ya que se colocó el atributo "defer" en la importación del script,
 // que nos soluciona el problema de los elementos no cargados del DOM. Más info => https://www.w3schools.com/tags/att_script_defer.asp
 
-const DATA_URL = "json/data.json"; // URL que contiene los datos que queremos mostrar
-
+const data_url = "json/data.json"; // URL que contiene los datos que queremos mostrar
 const container = document.getElementById("container"); // "Traemos" utilizando el DOM el div de id "container" para colocar la información en él
 
 /**
@@ -20,4 +19,11 @@ function showData(dataArray) {
 
 // Escribe el código necesario para realizar el fetch al archivo con los datos y mostrar los estudiantes con la función showData
 // Realizamos el fetch al archivo JSON
+
+fetch(data_url)
+.then( (response) => response.json())
+.then((data)=> {
+  console.log("data = ",data)
+  showData(data.students)
+})
 
